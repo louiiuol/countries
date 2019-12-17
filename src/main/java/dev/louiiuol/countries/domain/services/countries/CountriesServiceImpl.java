@@ -15,7 +15,7 @@ public class CountriesServiceImpl implements CountriesService {
     @Value("${countries.external-apis.rest-countries.url}")
     private String root;
 
-    @Autowired RestTemplate restTemplate = new RestTemplate();
+    @Autowired RestTemplate restTemplate; 
 
     @Autowired CountryJpaRepository repo;
 
