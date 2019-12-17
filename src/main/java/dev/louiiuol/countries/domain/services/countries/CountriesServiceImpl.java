@@ -15,10 +15,9 @@ public class CountriesServiceImpl implements CountriesService {
     @Value("${countries.external-apis.rest-countries.url}")
     private String root;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    @Autowired RestTemplate restTemplate = new RestTemplate();
 
-    @Autowired
-    CountryJpaRepository repo;
+    @Autowired CountryJpaRepository repo;
 
     @Override
     public CrountryViewDto getCountry(String codeIso) {
