@@ -1,24 +1,29 @@
 package dev.louiiuol.countries.domain.services.countries;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import dev.louiiuol.countries.api.controllers.dtos.responses.CrountryViewOtd;
+import dev.louiiuol.countries.api.controllers.dtos.responses.CrountryViewDto;
 import dev.louiiuol.countries.domain.entities.Country;
 import dev.louiiuol.countries.domain.repositories.CountryJpaRepository;
 
 @Service
 public class CountriesServiceImpl implements CountriesService {
 
-    final String root = "https://restcountries.eu/rest/v2/";
+    @Value("${countries.external-apis.rest-countries.url}")
+    private String root;
 
-    @Autowired CountryJpaRepository repo;
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    @Autowired
+    CountryJpaRepository repo;
 
     @Override
-    public CrountryViewOtd getCountry(String codeIso) {
+    public CrountryViewDto getCountry(String codeIso) {
 
-        CrountryViewOtd view; 
+        CrountryViewDto view;
         // Check if requested ISO is already in databse -> set view object returned
         if(repo.existsByCode(codeIso)) {
             Country entity = repo.findByCode(codeIso); 
@@ -27,7 +32,7 @@ public class CountriesServiceImpl implements CountriesService {
         // If not -> fetch it from external REST API -> Store in DB -> set view object returned
         else {
             String uri = root + "alpha/" + codeIso;
-            Country entity = new RestTemplate().getForObject(uri, Country.class);
+            Country entity = restTemplate.getForObject(uri, Country.class);
             entity.setCode(codeIso);
             view = CountriesServiceHelper.convert(repo.save(entity));
         }

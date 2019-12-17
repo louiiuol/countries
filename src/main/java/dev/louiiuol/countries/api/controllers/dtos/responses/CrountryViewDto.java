@@ -1,8 +1,8 @@
 package dev.louiiuol.countries.api.controllers.dtos.responses;
 
-public class CrountryViewOtd {
-    
-    private String code; 
+public class CrountryViewDto {
+
+    private String code;
 
     private String nativeName;
 
@@ -10,9 +10,8 @@ public class CrountryViewOtd {
 
     private String flag;
 
-    
-
-    public CrountryViewOtd() {}
+    public CrountryViewDto() {
+    }
 
     public String getCode() {
         return code;
@@ -46,7 +45,7 @@ public class CrountryViewOtd {
         this.flag = flag;
     }
 
-    public CrountryViewOtd(String code, String nativeName, String region, String flag) {
+    public CrountryViewDto(String code, String nativeName, String region, String flag) {
         this.code = code;
         this.nativeName = nativeName;
         this.region = region;
