@@ -4,6 +4,6 @@ import dev.louiiuol.countries.domain.entities.Country;
 
 public interface CountryRestApiService {
 
-    public Country getFromIso(String iso);
+    public Country getByIso(String iso);
 
 }

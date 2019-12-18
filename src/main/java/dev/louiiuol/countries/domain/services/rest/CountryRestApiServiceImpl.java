@@ -16,10 +16,9 @@ public class CountryRestApiServiceImpl {
     
     @Autowired RestTemplate restTemplate;
 
-    public Country getFromIso(String iso) {
+    public Country getByIso(String iso) {
         String uri = root + "alpha/" + iso;
         CountryFromApiDto dto = restTemplate.getForObject(uri, CountryFromApiDto.class);
-        // restTemplate.exchange(uri, HttpMethod.GET, null, CountryFromApiDto.class);
         dto.setCode(dto.getAlpha2Code());
         Country entity = new Country(dto.getCode(), dto.getNativeName(), dto.getRegion(), dto.getFlag());
         return entity;

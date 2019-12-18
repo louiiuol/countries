@@ -1,5 +1,7 @@
 package dev.louiiuol.countries.domain.services.countries;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,18 +21,17 @@ public class CountriesServiceImpl implements CountriesService {
     @Override
     public CrountryViewDto getByIso(String iso) {
 
-        CrountryViewDto view;
+        Optional<Country> countryOpt = repo.findByCode(iso);
+        Country entity;
         // Check if requested ISO is already in databse -> set view dto returned
-        if(repo.existsByCode(iso)) {
-            Country entity = repo.findByCode(iso); 
-            view = CountriesServiceHelper.convert(entity);
+        if(countryOpt.isPresent()) {
+            entity = countryOpt.get();
         }
         // If not -> fetch it from external REST API -> Store in DB -> set view dto returned
         else {
-            Country entity = countryRestApi.getFromIso(iso);
-            view = CountriesServiceHelper.convert(repo.save(entity));
+            entity = repo.save(countryRestApi.getByIso(iso));
         }
-        return view; 
+        return CountriesServiceHelper.convert(entity);
     }
 
 }
