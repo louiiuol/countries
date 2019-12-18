@@ -14,12 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/countries")
 public class CountriesController {
 
-    @Autowired
-    CountriesService service;
+    @Autowired CountriesService service;
 
     @GetMapping(value = "/{iso}")
-    public CrountryViewDto getCountry(@PathVariable String iso) {
-        return service.getCountry(iso);
-    }
+    public CrountryViewDto getByIso(@PathVariable String iso) { return service.getByIso(iso); }
     
 }
