@@ -1,9 +1,13 @@
 package dev.louiiuol.countries;
 
+import javax.validation.Validator;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
+
+import dev.louiiuol.countries.domain.services.rest.ValidateRestTemplate;
 
 @SpringBootApplication
 public class CountriesApplication {
@@ -13,8 +17,8 @@ public class CountriesApplication {
 	}
 
 	@Bean
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
+	RestTemplate restTemplate(Validator validator) {
+		return new ValidateRestTemplate(validator);
 	}
-
+	
 }

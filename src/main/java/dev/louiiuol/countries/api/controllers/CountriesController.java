@@ -17,6 +17,6 @@ public class CountriesController {
     @Autowired CountriesService service;
 
     @GetMapping(value = "/{iso}")
-    public CrountryViewDto getByIso(@PathVariable String iso) { return service.getByIso(iso); }
+    public CrountryViewDto getByIso(@PathVariable String iso) { return service.getByIso(iso.toUpperCase()); }
     
 }
