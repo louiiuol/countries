@@ -1,5 +1,7 @@
 package dev.louiiuol.countries.api.controllers.dtos.requests;
 
+import java.util.Objects;
+
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -53,5 +55,22 @@ public class CountryFromApiDto {
 		this.flag = flag;
 	}
 
-    
+	@Override
+	public int hashCode() {
+		return Objects.hash(code, nativeName, region, flag);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this)
+			return true;
+		if ( !(obj instanceof CountryFromApiDto) )
+			return false;
+		CountryFromApiDto test = (CountryFromApiDto) obj;
+		return Objects.equals(this.code, test.code)
+			&&Objects.equals(this.nativeName, test.nativeName)
+			&&Objects.equals(this.region, test.region)
+			&&Objects.equals(this.flag, test.flag);
+	}
+
 }
