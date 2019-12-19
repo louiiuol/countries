@@ -10,8 +10,7 @@ public class CrountryViewDto {
 
     private String flag;
 
-    public CrountryViewDto() {
-    }
+    public CrountryViewDto() { }
 
     public String getCode() {
         return code;
@@ -45,11 +44,6 @@ public class CrountryViewDto {
         this.flag = flag;
     }
 
-    public CrountryViewDto(String code, String nativeName, String region, String flag) {
-        this.code = code;
-        this.nativeName = nativeName;
-        this.region = region;
-        this.flag = flag;
-    }
     
+
 }

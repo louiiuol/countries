@@ -3,7 +3,6 @@ package dev.louiiuol.countries.domain.services.countries;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.louiiuol.countries.api.controllers.dtos.responses.CrountryViewDto;
@@ -14,11 +13,18 @@ import dev.louiiuol.countries.domain.services.rest.CountryRestApiServiceImpl;
 @Service
 public class CountriesServiceImpl implements CountriesService {
 
-    @Autowired CountryRestApiServiceImpl countryRestApi;
+    private CountryRestApiServiceImpl countryRestApi;
 
-    @Autowired ModelMapper mapper; 
+    private ModelMapper mapper;
 
-    @Autowired CountryJpaRepository repo;
+    private CountryJpaRepository repo;
+
+    public CountriesServiceImpl(CountryRestApiServiceImpl countryRestApi, ModelMapper mapper,
+            CountryJpaRepository repo) {
+        this.countryRestApi = countryRestApi;
+        this.mapper = mapper;
+        this.repo = repo;
+    }
 
     @Override
     public CrountryViewDto getByIso(String iso) {

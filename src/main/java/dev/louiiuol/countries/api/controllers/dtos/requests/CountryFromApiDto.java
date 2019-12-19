@@ -21,36 +21,37 @@ public class CountryFromApiDto {
 
     public CountryFromApiDto() {   }
 
-    public void setCode(String iso) {
-        this.code = iso;
-    }
+	public String getCode() {
+		return code.toLowerCase();
+	}
 
-    public String getCode() {
-        return code.toLowerCase();
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public String getNativeName() {
-        return nativeName;
-    }
+	public String getNativeName() {
+		return nativeName;
+	}
 
-    public void setNativeName(String nativeName) {
-        this.nativeName = nativeName;
-    }
+	public void setNativeName(String nativeName) {
+		this.nativeName = nativeName;
+	}
 
-    public String getRegion() {
-        return region;
-    }
+	public String getRegion() {
+		return region;
+	}
 
-    public void setRegion(String region) {
-        this.region = region;
-    }
+	public void setRegion(String region) {
+		this.region = region;
+	}
 
-    public String getFlag() {
-        return flag;
-    }
+	public String getFlag() {
+		return flag;
+	}
 
-    public void setFlag(String flag) {
-        this.flag = flag;
-    }
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
 
+    
 }

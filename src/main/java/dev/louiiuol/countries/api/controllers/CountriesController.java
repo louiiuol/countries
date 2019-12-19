@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.louiiuol.countries.api.controllers.dtos.responses.CrountryViewDto;
 import dev.louiiuol.countries.domain.services.countries.CountriesService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/countries")
 public class CountriesController {
 
-    @Autowired CountriesService service;
+    private CountriesService service;
+
+    protected CountriesController(CountriesService service) {
+        this.service = service;
+    }
 
     @GetMapping(value = "/{iso}")
     public CrountryViewDto getByIso(@PathVariable String iso) { return service.getByIso(iso.toUpperCase()); }
-    
+
 }
