@@ -66,11 +66,7 @@ public class CountryFromApiDto {
 			return true;
 		if ( !(obj instanceof CountryFromApiDto) )
 			return false;
-		CountryFromApiDto test = (CountryFromApiDto) obj;
-		return Objects.equals(this.code, test.code)
-			&& Objects.equals(this.nativeName, test.nativeName)
-			&& Objects.equals(this.region, test.region)
-			&& Objects.equals(this.flag, test.flag);
+		return Objects.equals(this.code, (CountryFromApiDto) obj.code);
 	}
 
 }

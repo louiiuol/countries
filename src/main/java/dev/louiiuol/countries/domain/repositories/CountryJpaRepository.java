@@ -9,5 +9,5 @@ import dev.louiiuol.countries.domain.entities.Country;
 public interface CountryJpaRepository extends JpaRepository<Country, Long> {
 
 	Optional<Country> findByCode(String iso);
-    
+
 }

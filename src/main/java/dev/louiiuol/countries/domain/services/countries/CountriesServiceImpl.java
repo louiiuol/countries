@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import dev.louiiuol.countries.api.controllers.dtos.responses.CrountryViewDto;
+import dev.louiiuol.countries.api.controllers.dtos.responses.CountryViewDto;
 import dev.louiiuol.countries.domain.entities.Country;
 import dev.louiiuol.countries.domain.repositories.CountryJpaRepository;
 import dev.louiiuol.countries.domain.services.rest.CountryRestApiServiceImpl;
@@ -27,7 +27,7 @@ public class CountriesServiceImpl implements CountriesService {
     }
 
     @Override
-    public CrountryViewDto getByIso(String iso) {
+    public CountryViewDto getByIso(String iso) {
 
         Optional<Country> countryOpt = repo.findByCode(iso);
         Country entity;
@@ -39,7 +39,7 @@ public class CountriesServiceImpl implements CountriesService {
         else {
             entity = repo.save(countryRestApi.getByIso(iso));
         }
-        return mapper.map(entity, CrountryViewDto.class);
+        return mapper.map(entity, CountryViewDto.class);
     }
 
 }
