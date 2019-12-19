@@ -2,12 +2,13 @@ package dev.louiiuol.countries.api.controllers.dtos.requests;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CountryFromApiDto {
 
-    private String code;
-
     @NotNull
-    private String alpha2Code;
+    @JsonProperty("alpha2Code")
+    private String code;
 
     @NotNull
     private String nativeName;
@@ -18,22 +19,16 @@ public class CountryFromApiDto {
     @NotNull
     private String flag;
 
-    public CountryFromApiDto() {}
-    
+    public CountryFromApiDto() {   }
+
+    @JsonProperty("alpha2Code")
     public void setCode(String iso) {
         this.code = iso;
     }
 
+    @JsonProperty("alpha2Code")
     public String getCode() {
-        return code;
-    }
-
-    public void setAlpha2Code(String iso) {
-        this.alpha2Code = iso;
-    }
-
-    public String getAlpha2Code() {
-        return alpha2Code;
+        return code.toLowerCase();
     }
 
     public String getNativeName() {
@@ -60,11 +55,4 @@ public class CountryFromApiDto {
         this.flag = flag;
     }
 
-    public CountryFromApiDto(String code, String nativeName, String region, String flag) {
-        this.code = code;
-        this.nativeName = nativeName;
-        this.region = region;
-        this.flag = flag;
-    }
-    
 }
