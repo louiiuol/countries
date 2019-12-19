@@ -21,12 +21,10 @@ public class CountryFromApiDto {
 
     public CountryFromApiDto() {   }
 
-    @JsonProperty("alpha2Code")
     public void setCode(String iso) {
         this.code = iso;
     }
 
-    @JsonProperty("alpha2Code")
     public String getCode() {
         return code.toLowerCase();
     }

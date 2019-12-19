@@ -2,6 +2,7 @@ package dev.louiiuol.countries;
 
 import javax.validation.Validator;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +20,11 @@ public class CountriesApplication {
 	@Bean
 	RestTemplate restTemplate(Validator validator) {
 		return new ValidateRestTemplate(validator);
+	}
+
+	@Bean
+	ModelMapper modelMapper() {
+		return new ModelMapper();
 	}
 	
 }

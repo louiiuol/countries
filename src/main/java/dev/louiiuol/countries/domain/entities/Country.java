@@ -27,6 +27,8 @@ public class Country {
     @Column(nullable = false)
     private String flag;
 
+    public Country() {    }
+
     public String getCode() {
         return code;
     }
@@ -65,8 +67,5 @@ public class Country {
         this.region = region;
         this.flag = flag;
     }
-
-    
-
 
 }

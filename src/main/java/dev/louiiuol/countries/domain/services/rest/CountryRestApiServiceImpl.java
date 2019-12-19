@@ -1,5 +1,6 @@
 package dev.louiiuol.countries.domain.services.rest;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,12 @@ public class CountryRestApiServiceImpl {
     
     @Autowired RestTemplate restTemplate;
 
+    @Autowired ModelMapper mapper; 
+
     public Country getByIso(String iso) {
         String uri = root + "alpha/" + iso;
         CountryFromApiDto dto = restTemplate.getForObject(uri, CountryFromApiDto.class);
-        Country entity = new Country(dto.getCode(), dto.getNativeName(), dto.getRegion(), dto.getFlag());
-        return entity;
+        return mapper.map(dto, Country.class);
     }
     
 }
