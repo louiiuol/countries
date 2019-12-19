@@ -66,7 +66,7 @@ public class CountryFromApiDto {
 			return true;
 		if ( !(obj instanceof CountryFromApiDto) )
 			return false;
-		return Objects.equals(this.code, (CountryFromApiDto) obj.code);
+		return Objects.equals(this.code, ( (CountryFromApiDto) obj ).code);
 	}
 
 }
