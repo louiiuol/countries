@@ -42,7 +42,7 @@ public class Country {
 			return true;
 		if ( !(obj instanceof Country) )
 			return false;
-		return Objects.equals(this.code, ( (Country) obj ).code);
+		return code.equals( ( (Country) obj ).code );
     }
 
 }

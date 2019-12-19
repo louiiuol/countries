@@ -31,6 +31,6 @@ public class CountryViewDto {
 			return true;
 		if ( !(obj instanceof CountryViewDto) )
 			return false;
-		return Objects.equals(this.code, ( (CountryViewDto) obj ).code);
+		return code.equals( ( (CountryViewDto) obj ).code );
     }
 }
